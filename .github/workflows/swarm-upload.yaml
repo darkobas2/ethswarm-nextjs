@@ -27,7 +27,7 @@ jobs:
           index-document: index.html
           bee-url: https://bee-1.fairdatasociety.org
           timeout: 900000
-          deferred: false
+          deferred: true
 
       - name: Setup feed
         uses: ethersphere/swarm-actions/write-feed@latest
