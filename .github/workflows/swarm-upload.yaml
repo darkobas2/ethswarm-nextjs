@@ -19,6 +19,7 @@ jobs:
         run: |
           npm ci
           npm run build
+      - run: ls -lsatrh ./out
       - name: Upload to Swarm
         uses: ethersphere/swarm-actions/upload-dir@latest
         id: upload
@@ -28,7 +29,7 @@ jobs:
           bee-url: https://bee-1.fairdatasociety.org
           timeout: 900000
           deferred: true
-      - run: ls -lsatrh ./out
+
       - name: Setup feed
         uses: ethersphere/swarm-actions/write-feed@latest
         id: feed
