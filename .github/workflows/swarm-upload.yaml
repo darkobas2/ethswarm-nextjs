@@ -46,7 +46,6 @@ jobs:
           # Perform the upload using curl
           response=$(curl -X POST "$BEE_URL/bzz" \
             -H "Content-Type: application/x-tar" \
-            -H "Swarm-Postage-Batch-Id: $POSTAGE_BATCH_ID" \
             -H "Swarm-Collection: true" \
             -H "Swarm-Index-Document: $INDEX_DOCUMENT" \
             -H "Swarm-Error-Document: $ERROR_DOCUMENT" \
