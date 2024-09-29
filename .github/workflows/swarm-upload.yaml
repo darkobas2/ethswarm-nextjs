@@ -21,7 +21,7 @@ jobs:
           npm run build
 
       - name: Upload to Swarm
-        uses: ethersphere/swarm-actions/upload-dir@latest
+        uses: darkobas2/swarm-actions/upload-dir@v0.8.1
         id: upload
         with:
           dir: ./out
