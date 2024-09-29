@@ -50,7 +50,7 @@ jobs:
             -H "Swarm-Collection: true" \
             -H "Swarm-Index-Document: $INDEX_DOCUMENT" \
             -H "Swarm-Error-Document: $ERROR_DOCUMENT" \
-            -H "Swarm-Deferred: false"
+            -H "Swarm-Deferred: false" \
             --data "@$DIR" \
             --silent --show-error --fail)
 
