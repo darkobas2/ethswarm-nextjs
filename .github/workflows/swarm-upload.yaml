@@ -33,49 +33,17 @@ jobs:
       - run: find ./out
       - run: tar cvf website.tar out/*
       # Upload the tarball to Swarm via curl
+
       - name: Upload to Swarm
+        uses: darkobas2/swarm-actions/upload-dir@v0.7.5
         id: upload
-        run: |
-          BEE_URL="https://bee-3.fairdatasociety.org"
-          POSTAGE_BATCH_ID="0000000000000000000000000000000000000000000000000000000000000000"  # Replace with your postage batch ID
-          DIR="website.tar"
-          ERROR_DOCUMENT="404.html"
-          INDEX_DOCUMENT="index.html"
-          TIMEOUT=300000  # Timeout in milliseconds
-
-          # Perform the upload using curl
-          response=$(curl -X POST "$BEE_URL/bzz" \
-            -H "Content-Type: application/x-tar" \
-            -H "Swarm-Collection: true" \
-            -H "Swarm-Index-Document: $INDEX_DOCUMENT" \
-            -H "Swarm-Error-Document: $ERROR_DOCUMENT" \
-            -H "Swarm-Deferred: false" \
-            --data "@$DIR" \
-            --silent --show-error --fail)
-
-          # Check if the upload was successful
-          if [ $? -ne 0 ]; then
-            echo "Error: Failed to upload the directory."
-            exit 1
-          fi
-
-          # Extract the reference from the response
-          reference=$(echo "$response" | jq -r '.reference')
-          echo "Swarm Reference: $reference"
-
-          # Save the reference to the $GITHUB_OUTPUT environment file
-          echo "reference=$reference" >> $GITHUB_OUTPUT
-
-      #- name: Upload to Swarm
-      #  uses: darkobas2/swarm-actions/upload-dir@v0.7.4
-      #  id: upload
-      #  with:
-      #    dir: website.tar
-      #    error-document: 404.html
-      #    index-document: index.html
-      #    bee-url: https://bee-3.fairdatasociety.org/
-      #    timeout: 300000
-      #    deferred: false
+        with:
+          dir: website.tar
+          error-document: 404.html
+          index-document: index.html
+          bee-url: https://bee-3.fairdatasociety.org/
+          timeout: 300000
+          deferred: false
       - name: Setup feed
         uses: ethersphere/swarm-actions/write-feed@latest
         id: feed
