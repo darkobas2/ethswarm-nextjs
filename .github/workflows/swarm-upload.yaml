@@ -9,10 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: '18'
       - name: Build
@@ -27,8 +27,8 @@ jobs:
           dir: ./out
           error-document: 404.html
           index-document: index.html
-          bee-url: https://bee-1.fairdatasociety.org/
-          timeout: 900000
+          bee-url: https://bee-3.fairdatasociety.org/
+          timeout: 300000
           deferred: false
 
       - name: Setup feed
