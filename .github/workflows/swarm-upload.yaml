@@ -32,6 +32,12 @@ jobs:
       - run: du -hs ./out
       - run: find ./out
       - run: tar cvf website.tar out/*
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: website-archive
+          path: website.tar
+
       # Upload the tarball to Swarm via curl
       - name: Upload to Swarm
         id: upload
