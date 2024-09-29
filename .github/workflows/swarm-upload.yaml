@@ -34,7 +34,7 @@ jobs:
       - run: tar cvf website.tar out/*
       # Upload the tarball to Swarm via curl
       - name: Upload to Swarm
-        id: upload_swarm
+        id: upload
         run: |
           BEE_URL="https://bee-3.fairdatasociety.org"
           POSTAGE_BATCH_ID="0000000000000000000000000000000000000000000000000000000000000000"  # Replace with your postage batch ID
@@ -66,11 +66,7 @@ jobs:
           echo "Swarm Reference: $reference"
 
           # Save the reference to the $GITHUB_OUTPUT environment file
-          echo "swarm_reference=$reference" >> $GITHUB_OUTPUT
-
-      # Save the reference for future use
-      - name: Save Swarm Reference
-        run: echo "{\"reference\": \"${{ steps.upload_swarm.outputs.swarm_reference }}\"}" > swarm_reference.json
+          echo "reference=$reference" >> $GITHUB_OUTPUT
 
       #- name: Upload to Swarm
       #  uses: darkobas2/swarm-actions/upload-dir@v0.7.4
