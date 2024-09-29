@@ -51,8 +51,7 @@ jobs:
             -H "Swarm-Index-Document: $INDEX_DOCUMENT" \
             -H "Swarm-Error-Document: $ERROR_DOCUMENT" \
             -H "Swarm-Deferred: false"
-            --data-binary "@$DIR" \
-            --max-time $((TIMEOUT/100000)) \
+            --data "@$DIR" \
             --silent --show-error --fail)
 
           # Check if the upload was successful
