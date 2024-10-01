@@ -38,7 +38,7 @@ jobs:
           path: website.tar
           
       - name: Upload to Swarm
-        uses: darkobas2/swarm-actions/upload-dir@v0.7.5
+        uses: darkobas2/swarm-actions/upload-dir@v0.7.4
         id: upload
         with:
           dir: /out/
