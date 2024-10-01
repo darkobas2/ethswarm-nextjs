@@ -38,7 +38,7 @@ jobs:
           path: website.tar
           
       - name: Upload to Swarm
-        uses: darkobas2/swarm-actions/upload-dir@v0.7.4
+        uses: ethersphere/swarm-actions/write-feed@latest
         id: upload
         with:
           dir: ./out/
@@ -52,7 +52,7 @@ jobs:
         id: feed
         with:
           reference: ${{ steps.upload.outputs.reference }}
-          topic: "swarm-homepage"
+          topic: c869821c02560960441332cc004b56a03cb8c9521888d056233b1b961c0959fd
           bee-url: https://bee-1.fairdatasociety.org
           signer: ef8ca8ca3dbccd006edbd55527194e6d29d393b4eaedd7c55831ee709c10c81d
 
