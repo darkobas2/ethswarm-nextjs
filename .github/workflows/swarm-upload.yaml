@@ -41,7 +41,7 @@ jobs:
         uses: darkobas2/swarm-actions/upload-dir@v0.7.4
         id: upload
         with:
-          dir: /out/
+          dir: ./out/
           error-document: 404.html
           index-document: index.html
           bee-url: https://bee-3.fairdatasociety.org/
